@@ -1,0 +1,18 @@
+{
+  "Header": {
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36"
+  },
+  "frequent": 0.5,
+  "proxysrc": "",
+  "encode": "utf-8",
+  "beginurl": [
+    "https://juejin.im/",
+    "https://segmentfault.com/",
+    "https://www.jianshu.com/search?q=%E7%BC%96%E7%A8%8B&page=1&type=collection"
+  ],
+  "domain": [
+    "juejin.im",
+    "segmentfault.com",
+    "jianshu.com"
+  ]
+}
