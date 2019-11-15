@@ -56,10 +56,12 @@ class SaveQueue:
             sys.exit(e)
 
     def add(self, context):
-        content = context.content
+        content = context.content.strip()
+        title = context.title.strip()
         if self.classifier.predict(content) == [1]:
-            self.MD5.update(content.encode(encoding='utf-8'))
-            flag = self.redisConnection.sadd(self.redis_key, self.MD5.hexdigest())
+            self.MD5.update(title.encode(encoding='utf-8'))
+            md5 = self.MD5.hexdigest()
+            flag = self.redisConnection.sadd(self.redis_key, md5)
             if flag != 0:
                 self.queue.appendleft(context)
         else:

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Search</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    a {
+      color:#3385ff
+    }
+    body{
+      padding-top:80px;
+    }
+    .start{
+      position: fixed;
+      top: 40%;
+      left: 35%;
+      /* transform: translateX(-50%); */
+    }
+    .search {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-bottom:1px solid #ccc;
+      padding:10px 0 10px 60px
+    }
+	#img {
+	  <!-background-color: #4FBBB2;->
+	}
+    #du {
+      width: 400px;
+      height: 34px;
+      text-indent: 8px;
+    }
+    #btn {
+      height: 34px;
+      width: 80px;
+      text-align: center;
+      line-height: 34px;
+      background-color: #4FBBB2;
+      border: none;
+      color: #fff
+    }
+    .start{
+      position: absolute;
+    }
+    #res {
+      margin-left: 60px;
+      width: 500px;
+    }
+    #li{
+      margin-top:20px
+    }
+    #li a {
+      font-size: 18px;
+    }
+
+    #li p {
+      margin-top: 10px;
+      font-size: 14px;
+      height: 40px;
+      overflow: hidden;
+      /* white-space: nowrap; */
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+    }
+    /* 隐藏元素 */
+    .dn{
+      display: none;
+    }
+	
+	body
+	{
+		background-color:#F3F9FA;
+	}
+	
+	
+  </style>
+</head>
+
+<body>
+  <div class="start">
+	<img id="img" src="./img/1.jpg" width="100" height="100" style="position:absolute; left:180px; top:-120px; "/> 
+    <input id="du" placeholder="请输入搜索关键字"><button id="btn"> 点击搜索</button>
+  </div>
+  <!-- 先隐藏 请求数据时显示-->
+  <div id="res" class="dn">
+    <ul id="res_ul">
+      <li id="li">
+        <a href="">山西 百度百科</a>
+        <p>
+          山西，简称“晋”，中华人民共和国省级行政区，省会太原，位于中国华北，山西界于北纬34°34′-40°44′，东经110°14′-114°33′之间，东与河北为邻，西与陕西相望，南与河南接壤，北与内蒙古毗连，总面积15.67万平方千米。
+        </p>
+      </li>
+      <li id="li">
+        <a href="">山西 百度百科</a>
+        <p>
+          山西，简称“晋”，中华人民共和国省级行政区，省会太原，位于中国华北，山西界于北纬34°34′-40°44′，东经110°14′-114°33′之间，东与河北为邻，西与陕西相望，南与河南接壤，北与内蒙古毗连，总面积15.67万平方千米。
+        </p>
+      </li>
+      <li id="li">
+        <a href="">山西 百度百科</a>
+        <p>
+          山西，简称“晋”，中华人民共和国省级行政区，省会太原，位于中国华北，山西界于北纬34°34′-40°44′，东经110°14′-114°33′之间，东与河北为邻，西与陕西相望，南与河南接壤，北与内蒙古毗连，总面积15.67万平方千米。
+        </p>
+      </li>
+    </ul>
+  </div>
+
+</body>
+
+
+
+<script>
+  let ipt = document.querySelector('#du')
+
+  ipt.oninput = function(){
+    // console.log(this.value)
+    if (this.value.trim() === '') {
+      this.parentNode.classList.remove('search')
+    }
+      this.parentNode.classList.add('search')
+  }
+
+</script>
+</html>

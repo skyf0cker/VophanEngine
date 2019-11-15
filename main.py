@@ -1,3 +1,5 @@
+import websockets
+
 from utils.elasticsearch import *
 from Spider.spider import spider
 from utils.TextExtract import TextExtractor
@@ -12,11 +14,17 @@ class SaveKernel:
     实现Save核
     """
     def __init__(self):
-        self.client = pymongo.MongoClient(host="localhost", port=27017)
-        self.db = self.client.spider
-        self.collections = self.db.articles
+        # websockets
+        pass
+        # mongodb 储存
+        # self.client = pymongo.MongoClient(host="localhost", port=27017)
+        # self.db = self.client.spider
+        # self.collections = self.db.articles
 
-    def save(self, context):
+    async def _init(self):
+        self.ws_client = await websockets.connect("ws://localhost:3000/api/v1/elastic")
+
+    async def save(self, context):
 
         article = {
             "title": context.title,
@@ -26,13 +34,16 @@ class SaveKernel:
         print("title:", context.title)
         print("time:", context.time)
         print("content:", context.content)
+        js = json.dumps(article)
+        await self.ws_client.send(js)
+
         # self.collections.insert(article)
-        try:
-            result = create_content("articles", article)["result"]
-            if result != "created":
-                print("[*]: 保存失败")
-        except KeyError as e:
-            print("[*]: 保存失败")
+        # try:
+        #     result = create_content("articles", article)["result"]
+        #     if result != "created":
+        #         print("[*]: 保存失败")
+        # except KeyError as e:
+        #     print("[*]: 保存失败")
 
 
 class Parsekernel:

@@ -1,3 +1,5 @@
+import asyncio
+
 from myqueue.savequeue import SaveQueue
 import pymongo
 
@@ -9,6 +11,9 @@ class saver:
     def __init__(self):
         self.save_queue = SaveQueue()
         self.kernel = None
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        self.loop = asyncio.get_event_loop()
 
     def _get_item_from_save(self):
         return self.save_queue.move()
@@ -16,14 +21,22 @@ class saver:
     def active(self, kernel):
         self.kernel = kernel
 
-    def _save(self):
-        context = self._get_item_from_save()
-        self.kernel.save(context)
+    async def _save(self):
+        await self.kernel._init()
+        while True:
+            try:
+                context = self._get_item_from_save()
+                await self.kernel.save(context)
+            except Exception as e:
+                continue
 
     def save(self):
 
-        while True:
-            try:
-                self._save()
-            except IndexError:
-                continue
+        self.loop.create_task(self._save())
+        self.loop.run_forever()
+
+        # while True:
+        #     try:
+        #         self._save()
+        #     except IndexError:
+        #         continue
