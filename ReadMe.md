@@ -16,12 +16,15 @@
 - PageRank链接预测做任务调度
 - 基于文本密度的正文抽取
 - 导航页与正文页的智能辨别
+- websocket 长连接导入elasticsearch
+- 功能完善的backend，实现了长连接数据导入，数据增删改查，用户权限认证，用户数据存储，搜索可视化。
 
 ## implement
 
 - redis：实现url和content去重
 - mongo：实现内容存储
 - elasticsearch：实现内容索引与存储
+- elastichd: 实现es可视化监控
 
 
 
