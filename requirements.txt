@@ -1,0 +1,9 @@
+redis
+networkx
+requests
+pymongo
+jieba
+numpy
+matplotlib
+BS4
+websockets
